@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - ECO-EARN</title>
+    <link rel="stylesheet" href="style2.css">
+    <script>
+        // JavaScript to generate random names and scores
+        function generateLeaderboard() {
+            const names = ["John", "Jane", "Michael", "Sarah", "David", "Emma", "James", "Olivia", "Lucas", "Sophia"];
+            const leaderboard = [];
+            
+            // Generate leaderboard with random points
+            for (let i = 0; i < 10; i++) {
+                const name = names[Math.floor(Math.random() * names.length)];
+                const points = Math.floor(Math.random() * 1000); // Points can be between 0 and 999
+                leaderboard.push({ name: name, points: points });
+            }
+            
+            // Sort leaderboard by points in descending order
+            leaderboard.sort((a, b) => b.points - a.points);
+            
+            // Display leaderboard
+            const leaderboardDiv = document.getElementById('leaderboard');
+            leaderboardDiv.innerHTML = "";
+            
+            leaderboard.forEach((entry, index) => {
+                leaderboardDiv.innerHTML += `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${entry.name}</td>
+                        <td>${entry.points}</td>
+                    </tr>
+                `;
+            });
+        }
+
+        // Generate leaderboard when the page loads
+        window.onload = generateLeaderboard;
+    </script>
+</head>
+<body style="background: linear-gradient(to right, #000000, #1a472a); color: white;">
+    <div class="main-navbar">
+        <img src="img1.avif" alt="ECO-EARN Logo" class="logo-image">
+        <div class="logo">ECO-EARN</div>
+    </div>
+
+    <div class="navbar-links">
+        <a href="index.html" target="_blank">Home</a>
+        <a href="profile.html" target="_blank">Profile</a>
+        <a href="services.html" target="_blank">Services</a>
+        <a href="dashboard.html" target="_blank">Dashboard</a>
+        <a href="#" target="_blank">Help</a>
+        <a href="#" target="_blank">Contact Us</a>
+        <a href="#" target="_blank">Logout</a>
+        <a href="#" target="_blank">About Us</a>
+    </div>
+
+    <div class="content">
+        <div class="welcome">Leaderboard</div>
+        <p>Here are the top 10 players based on the points they scored after selling plastic:</p>
+        
+        <table id="leaderboard" class="leaderboard-table">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Name</th>
+                    <th>Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Leaderboard rows will be dynamically populated here -->
+            </tbody>
+        </table>
+    </div>
+
+    <div class="footer">
+        &copy; 2025 ECO-EARN. All rights reserved.
+    </div>
+</body>
+</html>
